@@ -36,3 +36,19 @@
     transform: rotate(360deg);
   }
 }
+.btn-close {
+  color: rgb(0, 208, 255);
+}
+.table thead tr th {
+  color: #fff;
+  background-color: rgb(65 84 241);
+  text-transform: uppercase;
+}
+
+.table tbody tr td {
+  background-color: #fff;
+}
+
+.mr-2 {
+  margin-right: 10px;
+}
