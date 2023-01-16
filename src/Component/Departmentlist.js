@@ -3,7 +3,7 @@ import DepartmentForm from "./DepartmentForm";
 import { MDBModalHeader } from "mdb-react-ui-kit";
 import { NavLink } from "react-router-dom";
 import departmentService from "../Services/Department";
-
+import Popupmaster from "./Popupmaster";
 const Departmentlist = () => {
   const { departments, getDepartments, setDepartments } = departmentService();
 
@@ -15,6 +15,8 @@ const Departmentlist = () => {
     status: false,
     data: {},
   });
+
+  const [popup, setPopup] = useState(false);
   return (
     <div>
       <main id="main" className="main">
@@ -35,9 +37,11 @@ const Departmentlist = () => {
             >
               DepartmentInfo:
             </h4>
+
             <NavLink to="/DepartmentForm/0" className="btn btn-primary">
               NEW
             </NavLink>
+            {popup && <Popupmaster popup={popup} setPopup={setPopup} />}
           </MDBModalHeader>
           <section className="section dashboard">
             <div className="row">

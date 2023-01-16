@@ -1,17 +1,18 @@
 import { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { patchRequest, postRequest, getRequest } from "../Services/ApiService";
 
 const DepartmentService = () => {
+  const moduleBase = "department/";
   const [departments, setDepartments] = useState([]);
   const [input, setInput] = useState({});
   const params = useParams();
-  const Navigate = useNavigate();
+
   const getDepartments = async () => {
     try {
-      const res = await getRequest(`getDepartment`);
+      const res = await getRequest(`${moduleBase}/get`);
       setDepartments(res?.result?.message);
     } catch (error) {
       console.error(error);
@@ -20,7 +21,9 @@ const DepartmentService = () => {
 
   const getDepartmentbyId = async () => {
     try {
-      const response = await getRequest(`getDepartmentbyId?id=${params.id}`);
+      const response = await getRequest(
+        `${moduleBase}/getDepartmentbyId?id=${params.id}`
+      );
       setInput(response?.result?.message);
     } catch (error) {
       console.error(error);
@@ -43,9 +46,9 @@ const DepartmentService = () => {
     let res = {};
     try {
       if (!input?._id) {
-        res = await postRequest(`createDepartment`, input);
+        res = await postRequest(`${moduleBase}/create`, input);
       } else {
-        res = await patchRequest(`updateDepartment`, {
+        res = await patchRequest(`${moduleBase}/update`, {
           ...input,
           _id: input?._id,
         });
@@ -54,7 +57,6 @@ const DepartmentService = () => {
         toast.error(res.result.error);
       } else {
         toast.success("Form Submitted");
-        Navigate("/Departmentlist");
       }
     } catch (error) {
       toast.error(

@@ -1,4 +1,5 @@
-import React from "react";
+import { React } from "react";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -8,11 +9,18 @@ const Navbar = () => {
         className="header fixed-top d-flex align-items-center"
       >
         <div className="d-flex align-items-center justify-content-between">
+          <h2>
+            <span>S</span>quare
+          </h2>
+          <h2>
+            <span>P</span>ay
+          </h2>
+        </div>
+
+        <div className="d-flex align-items-center justify-content-between">
           <a href="index.html" className="logo d-flex align-items-center">
             <img src="assets/img/logo.png" alt="" />
-            <span className="d-none d-lg-block">NiceAdmin</span>
           </a>
-          <i className="bi bi-list toggle-sidebar-btn"></i>
         </div>
 
         <div className="search-bar">
@@ -220,12 +228,12 @@ const Navbar = () => {
                 data-bs-toggle="dropdown"
               >
                 <img
-                  src="/assets/img/profile-img.jpg"
+                  src="/assets/img/ProfilePic.png"
                   alt="Profile"
                   className="rounded-circle"
                 />
                 <span className="d-none d-md-block dropdown-toggle ps-2">
-                  K. Anderson
+                  <NavLink to="/ProfilePic" className="nav-link"></NavLink>
                 </span>
               </a>
 

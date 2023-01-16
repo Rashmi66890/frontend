@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
-
 import departmentService from "../Services/Department";
 
 const DepartmentForm = () => {

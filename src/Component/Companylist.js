@@ -44,6 +44,7 @@ const Companylist = () => {
                       <th>Owner</th>
                       <th>Company</th>
                       <th>Brand</th>
+                      <th>Department</th>
                       <th>Email</th>
                       <th>Phone</th>
                       <th>Address</th>
@@ -57,51 +58,55 @@ const Companylist = () => {
                   </thead>
                   <tbody>
                     {data.map((d, i) => (
-                      <tr key={i}>
-                        <td>{i + 1}</td>
-                        <td>
-                          {d.ownerName}
-                          <small className="d-block">{d.referenceId}</small>
-                        </td>
-                        <td>{d.companyName}</td>
-                        <td>{d.brandName}</td>
-                        <td>{d.email}</td>
-                        <td>{d.phone}</td>
-                        <td>
-                          {d.address}
-                          <small className="d-block">{d.city}</small>
-                          <small className="d-block">{d.state}</small>
-                          <small className="d-block">{d.country}</small>
-                          <small className="d-block">{d.pinCode}</small>
-                        </td>
-                        <td>{d.logoUrl}</td>
-                        <td>{d.planActiveAt}</td>
-                        <td>{d.planExpiredAt}</td>
-                        <td>{d.isActive}</td>
-                        <td>{d.apiKey}</td>
-
-                        <td>
-                          <button
-                            type="button"
-                            onClick={() => setModal({ status: true, data: d })}
-                            className="btn btn-primary"
-                          >
-                            Edit
-                          </button>
-
-                          {!d.isApprove ? (
+                      <>
+                        <tr key={i}>
+                          <td>{i + 1}</td>
+                          <td>
+                            {d.ownerName}
+                            <small className="d-block">{d.referenceId}</small>
+                          </td>
+                          <td>{d.companyName}</td>
+                          <td>{d.brandName}</td>
+                          <td>{d.departmentName.join(",")}</td>
+                          <td>{d.email}</td>
+                          <td>{d.phone}</td>
+                          <td>
+                            {d.address}
+                            <small className="d-block">{d.city}</small>
+                            <small className="d-block">{d.state}</small>
+                            <small className="d-block">{d.country}</small>
+                            <small className="d-block">{d.pinCode}</small>
+                          </td>
+                          <td>{d.logo}</td>
+                          <td>{d.planActiveAt}</td>
+                          <td>{d.planExpiredAt}</td>
+                          <td>{d.isActive}</td>
+                          <td>{d.apiKey}</td>
+                          <td>
                             <button
                               type="button"
-                              className="btn btn-info m-1"
-                              onClick={() => approved(d.email, true)}
+                              onClick={() =>
+                                setModal({ status: true, data: d })
+                              }
+                              className="btn btn-primary"
                             >
-                              APPROVE
+                              Edit
                             </button>
-                          ) : (
-                            ""
-                          )}
-                        </td>
-                      </tr>
+
+                            {!d.isApprove ? (
+                              <button
+                                type="button"
+                                className="btn btn-info m-1"
+                                onClick={() => approved(d.email, true)}
+                              >
+                                APPROVE
+                              </button>
+                            ) : (
+                              ""
+                            )}
+                          </td>
+                        </tr>
+                      </>
                     ))}
                   </tbody>
                 </table>

@@ -1,5 +1,5 @@
 export const DATACONSTANT = {
-  SETCOOKIE: ".plan_info",
+  COOKIE_NAME: ".breaking.auhToken",
 
   DOMAIN_NAME: "admin.checkmyplan.in",
 
